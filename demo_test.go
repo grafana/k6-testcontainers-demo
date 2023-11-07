@@ -7,24 +7,17 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/testcontainers/testcontainers-go"
 	"github.com/testcontainers/testcontainers-go/modules/k3s"
 	"github.com/testcontainers/testcontainers-go/modules/k6"
 )
 
-// ExposePort adds a port to the list of exposed ports
-func ExposePort(port string) testcontainers.CustomizeRequestOption {
-	return func(req *testcontainers.GenericContainerRequest) {
-		req.ExposedPorts = append(req.ExposedPorts, port)
-	}
-}
 
 
 func Test_Demo(t *testing.T) {
 	ctx := context.Background()
 
-	// start a k3s container exposing port 30333 that will by used by the application
-	k3sContainer, err := k3s.RunContainer(ctx, ExposePort("30333/tcp"))
+	// start a k3s container
+	k3sContainer, err := k3s.RunContainer(ctx)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -85,7 +78,7 @@ func Test_Demo(t *testing.T) {
 	if err != nil {
 		t.Fatalf("failed to get k3s IP:\n%v", err)
 	}
-	frontEndUrl := fmt.Sprintf("http://%s:30333", k3sIP)
+	frontEndUrl := fmt.Sprintf("http://%s:3333", k3sIP)
 
 	// path to script must be absolute
 	scriptPath, err := filepath.Abs("scripts/test.js")

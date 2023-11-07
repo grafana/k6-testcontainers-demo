@@ -53,14 +53,13 @@ metadata:
   name: quickpizza-frontend
 spec:
   ports:
-  - nodePort: 30333
-    port: 3333
+  - port: 3333
     protocol: TCP
     targetPort: 3333
   selector:
     app.k8s.io/name: quickpizza
     app.kubernetes.io/instance: frontend-gateway
-  type: NodePort
+  type: LoadBalancer
 ---
 apiVersion: v1
 kind: Service
