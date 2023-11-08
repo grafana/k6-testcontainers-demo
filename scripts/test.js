@@ -16,7 +16,7 @@ export const options = {
       maxVUs: 20,
       exec: 'requestPizza',
       startTime: '0s',
-      duration: '30s',
+      duration: '10s',
     }
   }
 };
