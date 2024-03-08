@@ -11,13 +11,14 @@ import (
 	"github.com/testcontainers/testcontainers-go/modules/k6"
 )
 
-
-
 func Test_Demo(t *testing.T) {
 	ctx := context.Background()
 
 	// start a k3s container
-	k3sContainer, err := k3s.RunContainer(ctx)
+	k3sContainer, err := k3s.RunContainer(
+		ctx,
+		k3s.WithManifest(filepath.Join(".", "manifests", "quickpizza.yaml")),
+	)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -29,33 +30,21 @@ func Test_Demo(t *testing.T) {
 		}
 	}()
 
-	err = k3sContainer.CopyFileToContainer(
-		ctx,
-		"./manifests/quickpizza.yaml",
-		"quickpizza.yaml",
-		0x644,
-	)
-	if err != nil {
-		t.Fatalf("copying files to cluster %v", err)
-		
-	}
-
 	_, _, err = k3sContainer.Exec(
-		ctx, 
+		ctx,
 		[]string{
 			"kubectl",
 			"apply",
 			"-f",
-			"quickpizza.yaml",
+			"/var/lib/rancher/k3s/server/manifests/quickpizza.yaml",
 		},
 	)
 	if err != nil {
 		t.Fatalf("deploying app: %v", err)
-		
 	}
 
 	rc, stdout, err := k3sContainer.Exec(
-		ctx, 
+		ctx,
 		[]string{
 			"kubectl",
 			"wait",
@@ -117,7 +106,7 @@ func Test_Demo(t *testing.T) {
 		} else {
 			logs.ReadFrom(logReader)
 		}
-		
-		t.Fatalf("test failed with code %d\n%s\n",  state.ExitCode, logs.String())
+
+		t.Fatalf("test failed with code %d\n%s\n", state.ExitCode, logs.String())
 	}
 }
