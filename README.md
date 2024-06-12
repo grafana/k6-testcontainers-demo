@@ -13,6 +13,7 @@ To run the demo use the command below. Notice the `TC_BUILD_CACHE` environment v
 ```sh
 TC_K6_BUILD_CACHE=k6x-cache  go test demo_test.go -v
 ```
+
 ```
 === RUN   Test_Demo
 2024/01/10 17:31:50 github.com/testcontainers/testcontainers-go - Connected to docker: 
