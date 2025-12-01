@@ -1,15 +1,13 @@
 module github.com/grafana/k6-testcontainer-demo
 
-go 1.19
+go 1.23.0
 
-require (
-	github.com/testcontainers/testcontainers-go v0.26.0
-	github.com/testcontainers/testcontainers-go/modules/k3s v0.26.0
-)
+require github.com/testcontainers/testcontainers-go/modules/k3s v0.26.0
 
 require (
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/rogpeppe/go-internal v1.10.0 // indirect
+	github.com/testcontainers/testcontainers-go v0.26.0 // indirect
 )
 
 require (
@@ -50,8 +48,8 @@ require (
 	github.com/yusufpapurcu/wmi v1.2.3 // indirect
 	golang.org/x/exp v0.0.0-20230510235704-dd950f8aeaea // indirect
 	golang.org/x/mod v0.10.0 // indirect
-	golang.org/x/net v0.17.0 // indirect
-	golang.org/x/sys v0.13.0 // indirect
+	golang.org/x/net v0.38.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
 	golang.org/x/tools v0.8.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230525234030-28d5490b6b19 // indirect
 	google.golang.org/grpc v1.57.1 // indirect
