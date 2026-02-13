@@ -2,7 +2,7 @@ module github.com/grafana/k6-testcontainer-demo
 
 go 1.24.0
 
-toolchain go1.24.13
+toolchain go1.26.0
 
 require github.com/testcontainers/testcontainers-go/modules/k3s v0.26.0
 
