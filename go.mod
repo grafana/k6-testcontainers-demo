@@ -1,8 +1,6 @@
 module github.com/grafana/k6-testcontainer-demo
 
-go 1.24.0
-
-toolchain go1.24.13
+go 1.25.0
 
 require github.com/testcontainers/testcontainers-go/modules/k3s v0.26.0
 
@@ -58,7 +56,7 @@ require (
 	github.com/tklauser/numcpus v0.6.1 // indirect
 	github.com/yusufpapurcu/wmi v1.2.3 // indirect
 	golang.org/x/exp v0.0.0-20230510235704-dd950f8aeaea // indirect
-	golang.org/x/net v0.45.0 // indirect
-	golang.org/x/sys v0.36.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
